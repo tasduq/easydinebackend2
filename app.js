@@ -9,6 +9,13 @@ const bodyParser = require("body-parser");
 // const conversationRoutes = require("./Routes/Conversation-routes");
 // const messagesRoutes = require("./Routes/Messages-routes");
 
+const usersRoutes = require("./Routes/User-routes");
+const menuRoutes = require("./Routes/Menu-routes");
+const orderRoutes = require("./Routes/Order-routes");
+const tableRoutes = require("./Routes/Table-routes");
+
+const dashboardRoutes = require("./Routes/Dashboard-routes");
+
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -20,10 +27,10 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 let db;
 mongoose
   .connect(
-    "mongodb+srv://user1:dbuser99$@cluster0.eacum.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongodb+srv://user1:database99$@cluster0.6n21a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
-      useCreateIndex: true,
+      //   useCreateIndex: true,
       useUnifiedTopology: true,
     }
   )
@@ -95,6 +102,13 @@ app.use((req, res, next) => {
 // app.post("/api/users", (req, res) => {
 //   console.log(req.body);
 // });
+
+app.use("/api/users", usersRoutes);
+app.use("/api/menu", menuRoutes);
+
+app.use("/api/order", orderRoutes);
+app.use("/api/table", tableRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 app.listen(PORT, () => {
   console.log("listening on " + PORT);
