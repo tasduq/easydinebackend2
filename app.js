@@ -10,7 +10,7 @@ const bodyParser = require("body-parser");
 // const messagesRoutes = require("./Routes/Messages-routes");
 
 const usersRoutes = require("./Routes/User-routes");
-// const menuRoutes = require("./Routes/Menu-routes");
+const menuRoutes = require("./Routes/Menu-routes");
 // const orderRoutes = require("./Routes/Order-routes");
 // const tableRoutes = require("./Routes/Table-routes");
 
@@ -104,7 +104,7 @@ app.use((req, res, next) => {
 // });
 
 app.use("/api/users", usersRoutes);
-// app.use("/api/menu", menuRoutes);
+app.use("/api/menu", menuRoutes);
 
 // app.use("/api/order", orderRoutes);
 // app.use("/api/table", tableRoutes);
