@@ -9,12 +9,12 @@ const bodyParser = require("body-parser");
 // const conversationRoutes = require("./Routes/Conversation-routes");
 // const messagesRoutes = require("./Routes/Messages-routes");
 
-const usersRoutes = require("./Routes/User-routes");
-const menuRoutes = require("./Routes/Menu-routes");
-const orderRoutes = require("./Routes/Order-routes");
-const tableRoutes = require("./Routes/Table-routes");
+// const usersRoutes = require("./Routes/User-routes");
+// const menuRoutes = require("./Routes/Menu-routes");
+// const orderRoutes = require("./Routes/Order-routes");
+// const tableRoutes = require("./Routes/Table-routes");
 
-const dashboardRoutes = require("./Routes/Dashboard-routes");
+// const dashboardRoutes = require("./Routes/Dashboard-routes");
 
 const PORT = process.env.PORT || 3001;
 
@@ -103,12 +103,12 @@ app.use((req, res, next) => {
 //   console.log(req.body);
 // });
 
-app.use("/api/users", usersRoutes);
-app.use("/api/menu", menuRoutes);
+// app.use("/api/users", usersRoutes);
+// app.use("/api/menu", menuRoutes);
 
-app.use("/api/order", orderRoutes);
-app.use("/api/table", tableRoutes);
-app.use("/api/dashboard", dashboardRoutes);
+// app.use("/api/order", orderRoutes);
+// app.use("/api/table", tableRoutes);
+// app.use("/api/dashboard", dashboardRoutes);
 
 app.listen(PORT, () => {
   console.log("listening on " + PORT);
