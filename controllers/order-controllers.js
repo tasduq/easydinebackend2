@@ -1,5 +1,5 @@
 const Order = require("../Models/Orders");
-const Review = require("../Models/review");
+const Review = require("../Models/Review");
 const { v4: uuidv4 } = require("uuid");
 const stripe = require("stripe")(
   "sk_test_51KJeACGTujXHwRwSV9pNlKV0qkDrHpHZj4BoIG78RPBapUJljxxdFAGwNmbTX8jvXScdwjMsommcNZpptG5WeMw100VqpzeYzP"
