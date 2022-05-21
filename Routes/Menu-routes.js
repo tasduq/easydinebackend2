@@ -15,4 +15,6 @@ router.post("/additem", menuController.addItem);
 router.post("/deleteitem", menuController.deleteItem);
 router.post("/edititem", menuController.editItem);
 
+router.post("/translatemenuitem", menuController.translateMenuItem);
+
 module.exports = router;

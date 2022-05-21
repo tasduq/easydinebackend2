@@ -1,5 +1,6 @@
 const Menu = require("../Models/Menu");
 const { v4: uuidv4 } = require("uuid");
+const { Translate } = require("@google-cloud/translate").v2;
 
 const getMenu = async (req, res) => {
   console.log("hello g");
@@ -476,6 +477,84 @@ const deleteItem = async (req, res) => {
   }
 };
 
+const projectId = "easy-dine-347018";
+const translate = new Translate({
+  projectId: "easy-dine-347018", //eg my-project-0o0o0o0o'
+  keyFilename: "easy-dine-347018-466ab2db8a63.json", //eg my-project-0fwewexyz.json
+});
+
+async function quickStart(itemData, langCode) {
+  // The text to translate
+  // const text = "i love you!";
+  let text = {};
+
+  // The target language
+  const target = langCode;
+
+  // Translates some text into Russian
+
+  await Promise.all(
+    Object.values(itemData).map(async (item, i) => {
+      // console.log(item, i);
+      const [translations] = await translate.translate(item, target);
+      // console.log(translations, i);
+      // text[i] = translations;
+      if (i === 0) {
+        console.log("hello 0000000");
+        text = { ...text, itemName: translations };
+        console.log(text);
+      } else if (i === 1) {
+        text = { ...text, description: translations };
+        console.log(text);
+      } else if (i === 2) {
+        text = { ...text, ingredients: translations };
+        console.log(text);
+      }
+    })
+  );
+  console.log(text);
+
+  return text;
+
+  // for (const [key, value] of Object.entries(text)) {
+  //   // console.log(`${key}: ${value}`);
+  //   console.log(key);
+  //   if (key === "0") {
+  //     console.log("hello 0000000");
+  //     translatedText = { ...translatedText, itemName: value };
+  //     console.log(translatedText);
+  //   } else if (key === "1") {
+  //     translatedText = { ...translatedText, description: value };
+  //     console.log(translatedText);
+  //   } else if (key === "2") {
+  //     translatedText = { ...translatedText, ingredients: value };
+  //     console.log(translatedText);
+  //   }
+  // }
+
+  // return translatedText;
+
+  // console.log(`Text: ${text}`);
+  // console.log(`Translation: ${translation}`);
+}
+
+const translateMenuItem = async (req, res) => {
+  console.log(req.body);
+  const { itemName, description, ingredients, langCode } = req.body;
+  let translatedText = quickStart(
+    { itemName, description, ingredients },
+    langCode
+  );
+  // console.log(translatedText, "yoooooooooooooooo");
+  translatedText.then((val) => {
+    console.log(val, "yooooooooooooooo");
+    res.json({
+      success: true,
+      translatedData: val,
+    });
+  });
+};
+
 module.exports = {
   getMenu,
   addMenu,
@@ -485,4 +564,5 @@ module.exports = {
   addItem,
   deleteItem,
   editItem,
+  translateMenuItem,
 };
