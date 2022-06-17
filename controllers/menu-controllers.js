@@ -509,6 +509,18 @@ async function quickStart(itemData, langCode) {
       } else if (i === 2) {
         text = { ...text, ingredients: translations };
         console.log(text);
+      }else if (i === 3) {
+        text = { ...text, descriptionWord: translations };
+        console.log(text);
+      }else if (i === 4) {
+        text = { ...text, ingredientsWord: translations };
+        console.log(text);
+      }else if (i === 5) {
+        text = { ...text,  priceWord: translations };
+        console.log(text);
+      }else if (i === 6) {
+        text = { ...text, nutritionsWord: translations };
+        console.log(text);
       }
     })
   );
@@ -540,9 +552,9 @@ async function quickStart(itemData, langCode) {
 
 const translateMenuItem = async (req, res) => {
   console.log(req.body);
-  const { itemName, description, ingredients, langCode } = req.body;
+  const { itemName, description, ingredients, langCode , descriptionWord , ingredientsWord , priceWord , nutritionsWord } = req.body;
   let translatedText = quickStart(
-    { itemName, description, ingredients },
+    { itemName, description, ingredients,descriptionWord , ingredientsWord , priceWord , nutritionsWord  },
     langCode
   );
   // console.log(translatedText, "yoooooooooooooooo");
