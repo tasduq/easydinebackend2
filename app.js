@@ -90,19 +90,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get("/getads", (req, res) => {
-//   console.log("hello g");
-// });
-// app.use("/api/users", usersRoutes);
-// app.use("/api/placead", adRoutes);
-// app.use("/api/categories", categoryRoutes);
-// app.use("/api/popup", popupRoutes);
-// app.use("/api/conversation", conversationRoutes);
-// app.use("/api/messages", messagesRoutes);
-// app.post("/api/users", (req, res) => {
-//   console.log(req.body);
-// });
-
 app.use("/api/users", usersRoutes);
 app.use("/api/menu", menuRoutes);
 
